@@ -15,6 +15,8 @@ for i in inputList:
     if i == rn1:
         if flag == True:
             flag = False
+        else:
+            resultList.append(i)
     else:
         resultList.append(i)
 # print(resultList)
