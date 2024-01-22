@@ -11,10 +11,8 @@ for i in inputList:
 filteredList = [0 for _ in range(1000)]
 
 for i in range(len(resultList)):
-    if resultList[i] >= 2:
-        filteredList[i] = 0
-    else:
-        filteredList[i] = resultList[i]
+    if resultList[i] == 1:
+        filteredList[i] = 1
 #print(filteredList)
 max_value, cnt_value = -sys.maxsize, 0
 
