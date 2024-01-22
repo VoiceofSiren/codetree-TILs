@@ -3,12 +3,12 @@ import sys
 n = int(input())
 inputList = list(map(int, input().split()))
 
-resultList = [0 for _ in range(1000)]
+resultList = [0 for _ in range(1001)]
 
 for i in inputList:
     resultList[i] += 1
 #print(resultList)
-filteredList = [0 for _ in range(1000)]
+filteredList = [0 for _ in range(1001)]
 
 for i in range(len(resultList)):
     if resultList[i] == 1:
