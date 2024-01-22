@@ -1,0 +1,1 @@
+print(f'{input()}\n{float(input()):.2f}\n{float(input()):.2f}')
