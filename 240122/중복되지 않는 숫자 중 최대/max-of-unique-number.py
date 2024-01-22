@@ -12,7 +12,7 @@ filteredList = [0 for _ in range(1000)]
 
 for i in range(len(resultList)):
     if resultList[i] >= 2:
-        continue
+        filteredList[i] = 0
     else:
         filteredList[i] = resultList[i]
 #print(filteredList)
