@@ -21,7 +21,7 @@ max_value, cnt_value = -sys.maxsize, 0
 for i in range(len(filteredList)):
     if filteredList[i] == 1:
         max_value = i
-    if filteredList[i] == 0:
+    if filteredList[i] != 0:
         cnt_value += 1
 
 if cnt_value == 0:
