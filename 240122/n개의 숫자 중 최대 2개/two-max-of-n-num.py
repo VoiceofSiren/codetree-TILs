@@ -9,8 +9,15 @@ resultList = []
 for i in inputList:
     if i > rn1:
         rn1 = i
+flag = True
+
+for i in inputList:
+    if i == rn1:
+        if flag == True:
+            flag = False
     else:
         resultList.append(i)
+# print(resultList)
 
 for i in resultList:
     if i > rn2:
