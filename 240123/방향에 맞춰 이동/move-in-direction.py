@@ -77,8 +77,8 @@ dx = [-1, 0, 0, 1]
 dy = [0, -1, 1, 0]
 for i in range(n):
     direction, distance = getInput()
-    for j in range(distance):
-        x = x + dx[dirDict[direction]]
-        y = y + dy[dirDict[direction]]
+    x = x + dx[dirDict[direction]] * distance
+    y = y + dy[dirDict[direction]] * distance
+
 
 print(x, y)
