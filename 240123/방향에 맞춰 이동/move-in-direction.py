@@ -58,7 +58,7 @@ ny = y + dy[dir_num]
 
 n = int(input())
 
-def getInfo():
+def getInput():
     inputList = input().split()
     direction, distance = inputList[0], int(inputList[1])
     return direction, distance
@@ -76,7 +76,7 @@ dirDict = {
 dx = [-1, 0, 0, 1]
 dy = [0, -1, 1, 0]
 for i in range(n):
-    direction, distance = getInfo()
+    direction, distance = getInput()
     for j in range(distance):
         x = x + dx[dirDict[direction]]
         y = y + dy[dirDict[direction]]
