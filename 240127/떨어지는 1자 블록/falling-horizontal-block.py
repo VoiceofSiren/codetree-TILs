@@ -24,7 +24,7 @@ def ok_to_move(i):
             flag += 1
     return flag == n
 
-i = 0
+i = -1
 while True:
     if ok_to_move(i):
         i += 1
