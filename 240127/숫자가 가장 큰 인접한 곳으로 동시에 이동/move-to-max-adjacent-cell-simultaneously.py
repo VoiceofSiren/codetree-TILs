@@ -16,62 +16,59 @@ count = [
 ]
 
 #      N  S  W  E
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+dxs = [-1, 1, 0, 0]
+dys = [0, 0, -1, 1]
 
 def in_range(x, y):
     return 0 <= x < n and 0 <= y < n
 
-def get_max_value(x, y, square):
+def get_next_position(x, y, square):
     max_value = 0
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if not in_range(nx, ny):
-            continue
-        max_value = max(max_value, square[nx][ny])
-    return max_value
+    next_position = (0, 0)
+    for dx, dy in zip(dxs, dys):
+        nx, ny = x + dx, y + dy
+        if in_range(nx, ny) and square[nx][ny] > max_value:
+            max_value = square[nx][ny]
+            next_position = (nx, ny)
+    return next_position
 
-def get_dir_num(x, y, square):
-    dir_num = 0
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if not in_range(nx, ny):
-            continue
-        if square[nx][ny] == get_max_value(x, y, square):
-            dir_num = i
-            break
-    # print(f'(x, y) = ({x}, {y}) / dir_num = {dir_num}')
-    return dir_num
+def move(x, y):
+    nx, ny = get_next_position(x, y, square)
+    temp_count[nx][ny] += 1
 
-def move(x, y, square):
-    temp_value = temp_count[x][y]
-    temp_count[x][y] = 0
-    dir_num = get_dir_num(x, y, square)
-    x = x + dx[dir_num]
-    y = y + dy[dir_num]
-    temp_count[x][y] += temp_value
+def move_all(x, y, square):
+    for i in range(n):
+        for j in range(n):
+            temp_count[i][j] = 0
+    for i in range(n):
+        for j in range(n):
+            if count[i][j] == 1:
+                move(i, j)
+    for i in range(n):
+        for j in range(n):
+            count[i][j] = temp_count[i][j]
 
+def remove_duplicates():
+    for i in range(n):
+        for j in range(n):
+            if count[i][j] >= 2:
+                count[i][j] = 0
 
-rc_list = []
+def simulate(x, y, square):
+    move_all(x, y, square)
+    remove_duplicates()
+
 for _ in range(m):
-    r, c = tuple(map(int, input().split()))
-    r, c = r - 1, c - 1
-    rc_list.append([r, c])
-    temp_count[r][c] = 1
+    x, y = tuple(map(int, input().split()))
+    x , y = x - 1, y - 1
+    count[x][y] = 1
 
-for time in range(t):
-    # print('==============================')
-    # print(f'time = {time + 1}')
-    # print('------------------------------')
-    for i in range(m):
-        x, y = rc_list[i][0], rc_list[i][1]
-        move(x, y, square)
+for _ in range(t):
+    simulate(x, y, square)
 
-result = 0
-for row in temp_count:
-    for element in row:
-        if element >= 1:
-            result += 1
-print(result)
+answer = 0
+for i in range(n):
+    for j in range(n):
+        answer += count[i][j]
+
+print(answer)
