@@ -47,13 +47,11 @@ def get_index_of_first_zero(column):
     return index
 
 def get_index_of_last_zero(column):
-    index = len(column) - 1
-    for c in column:
-        if c == 0:
+    index = n - 1
+    for index in range(n-1, -1, -1):
+        if column[index] == 0:
             break
-        else:
-            index -= 1
-    return index - 1
+    return index
 
 def fall_down(r, c, square):
     for i in range(n):
@@ -72,7 +70,7 @@ def fall_down(r, c, square):
                     column[j] = column[j - zeros]
                 column[0] = 0
             else:
-                for j in range(ei - 1, si, -1):
+                for j in range(ei, si, -1):
                     column[j] = column[j - zeros]
                 for j in range(zeros):
                     column[j] = 0
