@@ -18,13 +18,13 @@ for i in range(n):
 def ok_to_move(i):
     flag = 0
     for j in range(n):
-        if block[j] == 1 and matrix[i + 1][j] == 1:
+        if block[j] == 1 and matrix[i][j] == 1:
             continue
         else:
             flag += 1
     return flag == n
 
-i = -1
+i = 0
 while True:
     if ok_to_move(i):
         i += 1
@@ -34,6 +34,10 @@ while True:
                 matrix[i][j] = block[j]
         break
 
+
+
+
+#####################################################################################################
 for row in matrix:
     for element in row:
         print(element, end=' ')
