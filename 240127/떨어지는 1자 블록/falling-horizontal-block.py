@@ -29,6 +29,11 @@ i = -1
 while True:
     if ok_to_move(i):
         i += 1
+        if i + 1 >= n:
+            for j in range(n):
+                if block[j] == 1:
+                    matrix[i][j] = 1
+            break
     else:
         for j in range(n):
             if block[j] == 1:
@@ -48,14 +53,13 @@ for row in matrix:
 
 
 
-
-# print('block')
-# for b in block:
-#     print(b, end= ' ')
-# print()
-
-# print('matrix')
-# for row in matrix:
-#     for element in row:
-#         print(element, end=' ')
-#     print()
+'''
+Traceback (most recent call last):
+File "/tmp/Main.py", line 30, in <module>
+if ok_to_move(i):
+^^^^^^^^^^^^^
+File "/tmp/Main.py", line 21, in ok_to_move
+if block[j] == 1 and matrix[i + 1][j] == 1:
+^^^^^^^^^^^^^
+IndexError: list index out of range
+'''
