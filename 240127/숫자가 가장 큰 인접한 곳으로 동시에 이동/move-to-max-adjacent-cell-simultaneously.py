@@ -30,6 +30,7 @@ def get_max_value(x, y, square):
         if not in_range(nx, ny):
             continue
         max_value = max(max_value, square[nx][ny])
+    return max_value
 
 def get_dir_num(x, y, square):
     dir_num = 0
@@ -41,13 +42,15 @@ def get_dir_num(x, y, square):
         if square[nx][ny] == get_max_value(x, y, square):
             dir_num = i
             break
+    # print(f'(x, y) = ({x}, {y}) / dir_num = {dir_num}')
     return dir_num
 
 def move(x, y, square):
     temp_value = temp_count[x][y]
     temp_count[x][y] = 0
-    x = x + dx[get_dir_num(x, y, square)]
-    y = y + dy[get_dir_num(x, y, square)]
+    dir_num = get_dir_num(x, y, square)
+    x = x + dx[dir_num]
+    y = y + dy[dir_num]
     temp_count[x][y] += temp_value
 
 
@@ -58,7 +61,10 @@ for _ in range(m):
     rc_list.append([r, c])
     temp_count[r][c] = 1
 
-for _ in range(t):
+for time in range(t):
+    # print('==============================')
+    # print(f'time = {time + 1}')
+    # print('------------------------------')
     for i in range(m):
         x, y = rc_list[i][0], rc_list[i][1]
         move(x, y, square)
