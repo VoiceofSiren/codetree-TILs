@@ -57,8 +57,3 @@ for row in square:
     for element in row:
         print(element, end=' ')
     print()
-
-
-    # print('====================================')
-    # print(f'num = {num} / (x, y) = ({x}, {y})')
-    # print(f'num = {num} / (p, q) = ({p}, {q})')
