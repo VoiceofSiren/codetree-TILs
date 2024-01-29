@@ -9,15 +9,14 @@ def print_num(arr):
 def in_range(x):
     return 0 <= x < n
 
-def count_num(n, num, arr):
-    if not in_range(n - 1):
-        return True
-    if not in_range(n - 2):
-        return True
-    if arr[n -2] == arr[n - 1] and arr[n - 1] == num:
-        return False
+def count_num(num_count, num, arr):
+    if num_count < 2:
+        return True 
     else:
-        return True
+        if arr[num_count - 2] == arr[num_count - 1] and arr[num_count - 1] == num:
+            return False
+        else:
+            return True
 
 
 def make_permutations(num_count):
@@ -27,7 +26,7 @@ def make_permutations(num_count):
         return
 
     for i in range(1, k + 1):
-        if count_num(n,i, arr):
+        if count_num(num_count, i, arr):
             arr.append(i)
             make_permutations(num_count + 1)
             arr.pop()
