@@ -43,7 +43,7 @@ q = deque()
 # (0, 0)은 탐색 성공
 visited[0][0] = 1
 # (0, 0)까지의 거리는 0이다.
-dist[0][0] = 1
+dist[0][0] = 0
 q.append((0, 0))
 
 # 탐색 수행
@@ -52,4 +52,4 @@ bfs()
 if dist[n - 1][m - 1] == 0:
     print(-1)
 else:
-    print(dist[n - 1][m - 1] - 1)
+    print(dist[n - 1][m - 1])
