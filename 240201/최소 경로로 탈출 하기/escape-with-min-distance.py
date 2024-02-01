@@ -49,4 +49,7 @@ q.append((0, 0))
 # 탐색 수행
 bfs()
 
-print(dist[n - 1][m - 1] - 1)
+if dist[n - 1][m - 1] == 0:
+    print(-1)
+else:
+    print(dist[n - 1][m - 1] - 1)
