@@ -29,7 +29,8 @@ n = int(input())
 f_list = [1, 1]
 
 for i in range(2, n + 1):
-    new_num = f_list[i - 1] * f_list[i - 2]
+    new_num = f_list[i - 1] + f_list[i - 2]
+    # print(f'f_list[{i}] = {new_num}')
     f_list.append(new_num)
 
 print(f_list[n - 1])
